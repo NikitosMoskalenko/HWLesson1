@@ -8,15 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
-//      MARK: - Public methods
+//      MARK: - Private methods
 
-    func alert(title: String, message: String, style: UIAlertController.Style, text: String) {
+    private func alert(title: String, message: String, style: UIAlertController.Style, text: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
         
-        let action = UIAlertAction.init(title: "OK", style: .cancel) { (action) in
-            if let alertControlletText = alertController.textFields?.first?.text{
+        let action = UIAlertAction(title: "OK", style: .cancel) { (action) in
+            if let alertControlletText = alertController.textFields?.first?.text {
                 if alertControlletText == text {
                     let answerAlertController = UIAlertController(title: "Congratulation!", message: "You are right!", preferredStyle: .actionSheet)
                     answerAlertController.addAction(action)
@@ -32,16 +32,16 @@ class ViewController: UIViewController {
         alertController.addTextField(configurationHandler: nil)
         
         alertController.addAction(action)
-        self.present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
 //    MARK: - Actions
 
-      @IBAction func firstButton(_ sender: Any) {
+      @IBAction func firstButton() {
         self.alert(title: "2 + 2", message: "= ?", style: .alert, text: "4")
       }
       
-      @IBAction func SecondButton(_ sender: Any) {
+      @IBAction func SecondButton() {
         self.alert(title: "2 + 2 * 2", message: "= ?", style: .alert, text: "6")
       }
 }
